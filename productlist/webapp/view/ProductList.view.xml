@@ -7,7 +7,7 @@
     <Page id="page" title="{i18n>title}">
         <content>
             <fb:FilterBar id="filterBar" search=".onSearch">
-                <SearchField></SearchField>
+                <SearchField id="searchField" search=".onSearch"></SearchField>
                 <fb:filterGroupItems>
                     <fb:FilterGroupItem groupName="Group1" name="ReleaseDate" label="{i18n>releaseDate}" visibleInFilterBar="true">
                         <fb:control>

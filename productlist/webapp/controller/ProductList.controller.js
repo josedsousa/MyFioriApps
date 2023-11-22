@@ -17,6 +17,7 @@ sap.ui.define(
         onInit: function () {
           this.oFilterBar = this.getView().byId("filterBar");
           this.oTable = this.getView().byId("table");
+          this.oSearchField = this.getView().byId("searchField");
 
           var that = this,
             oModel = new JSONModel();
@@ -58,8 +59,10 @@ sap.ui.define(
           });
         },
 
-        onSearch: function () {
-          var aTableFilters = this.oFilterBar
+        onSearch: function (event) {
+          var aTableFilters = [];
+
+          aTableFilters = this.oFilterBar
             .getFilterGroupItems()
             .reduce(function (aResult, oFilterGroupItem) {
               var oControl = oFilterGroupItem.getControl(),
@@ -101,6 +104,28 @@ sap.ui.define(
 
               return aResult;
             }, []);
+
+          if (this.oSearchField.getValue()) {
+            aTableFilters.push(
+              new Filter({
+                filters: [
+                  new Filter({
+                    path: "Name",
+                    operator: FilterOperator.Contains,
+                    value1: this.oSearchField.getValue(),
+                    caseSensitive: false,
+                  }),
+                  new Filter({
+                    path: "Description",
+                    operator: FilterOperator.Contains,
+                    value1: this.oSearchField.getValue(),
+                    caseSensitive: false,
+                  }),
+                ],
+                and: false,
+              })
+            );
+          }
 
           this.oTable.getBinding("items").filter(aTableFilters);
           this.oTable.setShowOverlay(false);
