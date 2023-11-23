@@ -28,7 +28,9 @@ sap.ui.define(
             value
           ) {
             oModel.setData(value);
-            that.getView().setModel(oModel, "ratingsModel");
+            //Row Counter
+            oModel.setProperty("/rows", that.oTable.getItems().length);
+            that.getView().setModel(oModel, "localModel");
           });
         },
 
