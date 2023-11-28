@@ -61,6 +61,13 @@ sap.ui.define(
           });
         },
 
+        onPress: function (oEvent) {
+          const oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("RouteProductDetail", {
+            ID: oEvent.getSource().getBindingContext().getPath().substr(1),
+          });
+        },
+
         onSearch: function (event) {
           var aTableFilters = [];
 

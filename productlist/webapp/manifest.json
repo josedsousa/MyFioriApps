@@ -96,10 +96,13 @@
       "routes": [
         {
           "name": "RouteProductList",
-          "pattern": ":?query:",
-          "target": [
-            "TargetProductList"
-          ]
+          "pattern": "",
+          "target": ["TargetProductList"]
+        },
+        {
+          "name": "RouteProductDetail",
+          "pattern": "{ID}",
+          "target": ["TargetProductDetail"]
         }
       ],
       "targets": {
@@ -109,6 +112,13 @@
           "clearControlAggregation": false,
           "viewId": "ProductList",
           "viewName": "ProductList"
+        },
+        "TargetProductDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductDetail",
+          "viewName": "ProductDetail"
         }
       }
     },

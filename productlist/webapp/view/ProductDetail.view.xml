@@ -1,0 +1,13 @@
+<mvc:View controllerName="productslist.productlist.controller.ProductDetail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core">
+    <Page id="page2">
+        <content>
+            <Text text="{i18n>name}: "></Text>
+            <Text text="{Name}"></Text>
+        </content>
+    </Page>
+</mvc:View>

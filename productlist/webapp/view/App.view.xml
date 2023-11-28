@@ -1,7 +1,6 @@
 <mvc:View controllerName="productslist.productlist.controller.App"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <App id="app">
-    </App>
+    <App id="app"></App>
 </mvc:View>
