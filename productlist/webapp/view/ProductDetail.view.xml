@@ -5,7 +5,7 @@
     xmlns:u="sap.uxap"
     xmlns:forms="sap.ui.layout.form">
     <Page id="page2">
-        <u:ObjectPageLayout enableLazyLoading="true" beforeNavigate="onBeforeNavigate" useIconTabBar="true" showTitleInHeaderContent="true" upperCaseAnchorBar="false" sectionChange="onSectionChange">
+        <u:ObjectPageLayout upperCaseAnchorBar="false">
             <u:headerTitle>
                 <u:ObjectPageDynamicHeaderTitle>
                     <u:expandedHeading>
@@ -33,42 +33,77 @@
             </u:headerTitle>
 
             <u:sections>
-                <u:ObjectPageSection titleUppercase="false" id="personal" title="{i18n>details}">
+                <u:ObjectPageSection titleUppercase="false" title="{i18n>productDetails}">
                     <u:subSections>
-                        <u:ObjectPageSubSection id="detailsSS1" titleUppercase="false">
+
+                        <u:ObjectPageSubSection titleUppercase="false">
                             <u:blocks>
                                 <forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent" width="auto">
                                     <core:Title text="{i18n>dates}"/>
 
                                     <Label text="{i18n>releaseDate}"/>
-                                    <Text text="{ReleaseDate}"/>
+                                    <Text text="{ path: 'ReleaseDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true } }"/>
 
                                     <Label text="{i18n>discontinuedDate}"/>
-                                    <Text text="{DiscontinuedDate}"/>
+                                    <Text text="{ path: 'DiscontinuedDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true } }"/>
                                 </forms:SimpleForm>
 
                                 <forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent" width="auto">
-                                    <core:Title text="{i18n>rating}"/>
-
-                                    <RatingIndicator value="{Rating}" iconSize="16px" />
+                                    <core:Title text="{i18n>category}"/>
+                                    <Text text="{Category/Name}"/>
                                 </forms:SimpleForm>
 
                                 <forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent" width="auto">
                                     <core:Title text="{i18n>price}"/>
-
                                     <Text text="{Price}"/>
+                                </forms:SimpleForm>
+
+                                <forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent" width="auto">
+                                    <core:Title text="{i18n>rating}"/>
+                                    <RatingIndicator value="{Rating}" iconSize="16px" />
                                 </forms:SimpleForm>
                             </u:blocks>
                         </u:ObjectPageSubSection>
 
-                        <u:ObjectPageSubSection id="personalSS2" title="Payment information" titleUppercase="false">
+                    </u:subSections>
+                </u:ObjectPageSection>
+
+                <u:ObjectPageSection titleUppercase="false" title="{i18n>supplier}">
+                    <u:subSections>
+
+                        <u:ObjectPageSubSection title="{i18n>details}" titleUppercase="false">
                             <u:blocks>
-                                <!-- <personal:PersonalBlockPart1 id="part1" columnLayout="1"/> -->
+                                <forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent" width="auto">
+                                    <core:Title text="{i18n>name}"/>
+                                    <Text text="{Supplier/Name}"/>
+
+                                    <core:Title text="{i18n>concurrency}"/>
+                                    <Text text="{Supplier/Concurrency}"/>
+                                </forms:SimpleForm>
                             </u:blocks>
-                            <u:moreBlocks>
-                                <!-- <personal:PersonalBlockPart2 id="part2" columnLayout="1"/> -->
-                            </u:moreBlocks>
                         </u:ObjectPageSubSection>
+
+                        <u:ObjectPageSubSection title="{i18n>address}" titleUppercase="false">
+                            <u:blocks>
+                                <forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent" width="auto">
+                                    <core:Title text="{i18n>name}"/>
+                                    <Text text="{Supplier/Address/Street}"/>
+
+                                    <core:Title text="{i18n>city}"/>
+                                    <Text text="{Supplier/Address/City}"/>
+
+                                    <core:Title text="{i18n>state}"/>
+                                    <Text text="{Supplier/Address/State}"/>
+
+                                    <core:Title text="{i18n>zipCode}"/>
+                                    <Text text="{Supplier/Address/ZipCode}"/>
+
+                                    <core:Title text="{i18n>country}"/>
+                                    <Text text="{Supplier/Address/Country}"/>
+                                </forms:SimpleForm>
+                            </u:blocks>
+                        </u:ObjectPageSubSection>
+
                     </u:subSections>
                 </u:ObjectPageSection>
             </u:sections>

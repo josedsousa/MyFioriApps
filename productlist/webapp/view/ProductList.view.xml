@@ -26,14 +26,21 @@
                             </ComboBox>
                         </fb:control>
                     </fb:FilterGroupItem>
+                    <fb:FilterGroupItem groupName="Group1" name="Category/Name" label="Category" visibleInFilterBar="true">
+                        <fb:control>
+                            <ComboBox items="{/Categories}">
+                                <core:Item key="{Name}" text="{Name}"/>
+                            </ComboBox>
+                        </fb:control>
+                    </fb:FilterGroupItem>
                 </fb:filterGroupItems>
             </fb:FilterBar>
             <Panel class="sapUiResponsiveMargin" width="auto">
-                <Table id="table" fixedLayout="false" alternateRowColors="true" headerText="{i18n>products} ({localModel>/rows})" items="{ path: '/Products' }" contextualWidth="Auto" autoPopinMode="true">
+                <Table id="table" fixedLayout="false" alternateRowColors="true" headerText="{i18n>products} ({localModel>/rows})" items="{ path: '/Products', parameters: { expand: 'Category' } }" contextualWidth="Auto" autoPopinMode="true">
                     <columns>
-                        <Column importance="High">
+                        <!-- <Column importance="High">
                             <Text text='ID'/>
-                        </Column>
+                        </Column> -->
                         <Column importance="High">
                             <Text text='{i18n>name}'/>
                         </Column>
@@ -52,13 +59,16 @@
                         <Column importance="Low">
                             <Text text='{i18n>price}'/>
                         </Column>
+                        <Column importance="Low">
+                            <Text text='Category'/>
+                        </Column>
                     </columns>
 
                     <items>
                         <ColumnListItem type="Navigation" press=".onPress">
-                            <cells>
+                            <!-- <cells>
                                 <Text text="{ID}" />
-                            </cells>
+                            </cells> -->
                             <cells>
                                 <Text text="{Name}" />
                             </cells>
@@ -76,6 +86,9 @@
                             </cells>
                             <cells>
                                 <Text text="{Price}" />
+                            </cells>
+                            <cells>
+                                <Text text="{Category/Name}" />
                             </cells>
                         </ColumnListItem>
                     </items>

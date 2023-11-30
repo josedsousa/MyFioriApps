@@ -19,6 +19,7 @@ sap.ui.define(
         onObjectMatched: function (oEvent) {
           this.getView().bindElement({
             path: "/" + oEvent.getParameter("arguments").ID,
+            parameters: { expand: "Category,Supplier" },
           });
         },
       }
